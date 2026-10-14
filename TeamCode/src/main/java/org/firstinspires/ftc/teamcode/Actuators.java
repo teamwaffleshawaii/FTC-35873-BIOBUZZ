@@ -51,7 +51,7 @@ public class Actuators{
         intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         intakeMotor.setPower(1); //Adjust this speed as needed, currently 100%
         //Intake Servos (Either 0 or 1)
-        leftIntakeServo.setPosition(1);
+        leftIntakeServo.setPosition(0);
         rightIntakeServo.setPosition(1);
     }
 
@@ -70,7 +70,7 @@ public class Actuators{
     //Set up launchServo here to be used in TeleOp and Auto
     public void launchServoOn(){
         //To turn on servos, use either 0 or 1 (opposite directions)
-        launchServo.setPosition(0);
+        launchServo.setPosition(1);
     }
     public void launchServoOff(){
         //To turn off servos, use 0.5

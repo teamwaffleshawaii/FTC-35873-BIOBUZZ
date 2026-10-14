@@ -15,11 +15,11 @@ public class TeleOp extends LinearOpMode {
                 //...
 
                 //Drivetrain, adjust the 0.5 as needed if you want your robot to be faster
-                actuator.rightMotor(gamepad1.left_stick_y * 0.5);
-                actuator.leftMotor(gamepad1.right_stick_y * 0.5);
+                actuator.rightMotor(gamepad1.left_stick_y * 0.5);  //adjust speed as needed
+                actuator.leftMotor(gamepad1.right_stick_y * 0.5); //adjust speed as needed
 
-                //Control your intake using the A button
-                if (gamepad1.a) {
+                //Control your intake using the CROSS button
+                if (gamepad1.cross) {
                     actuator.intakeOn();
                 }
                 else {
@@ -28,7 +28,7 @@ public class TeleOp extends LinearOpMode {
 
                 //Control your launch using the right trigger
                 if (gamepad1.right_trigger > 0.5) {
-                    actuator.launchMotor(0.75); //Adjust the launch power as needed
+                    actuator.launchMotor(0.50); //Adjust the launch power as needed
                 }
                 else {
                     actuator.launchMotor(0);    //Turn off launch motor
