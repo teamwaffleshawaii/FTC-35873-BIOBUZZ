@@ -15,27 +15,30 @@ public class TeleOp extends LinearOpMode {
                 //...
 
                 //Drivetrain, adjust the 0.5 as needed if you want your robot to be faster
-                actuator.rightMotor(gamepad1.left_stick_y * 0.5);  //adjust speed as needed
-                actuator.leftMotor(gamepad1.right_stick_y * 0.5); //adjust speed as needed
+                actuator.rightMotor(gamepad1.left_stick_y * 1.0);  //adjust speed as needed
+                actuator.leftMotor(gamepad1.right_stick_y * 1.0); //adjust speed as needed
 
                 //Control your intake using the CROSS button
-                if (gamepad1.cross) {
+                if (gamepad2.a) {
                     actuator.intakeOn();
+                }
+                else if (gamepad2.b) {
+                    actuator.intakeReverse();
                 }
                 else {
                     actuator.intakeOff();
                 }
 
-                //Control your launch using the right trigger
-                if (gamepad1.right_trigger > 0.5) {
-                    actuator.launchMotor(0.50); //Adjust the launch power as needed
+                //Control your launch using the x & y
+                if (gamepad2.x) {
+                    actuator.launchMotor(0.50); //Press X to turn on
                 }
-                else {
-                    actuator.launchMotor(0);    //Turn off launch motor
+                else if (gamepad2.y) {
+                    actuator.launchMotor(0);    //Press Y to turn off
                 }
 
                 //Control your launch servo using the right bumper
-                if (gamepad1.right_bumper) {
+                if (gamepad2.right_bumper) {
                     actuator.launchServoOn();  //Turn on the windmill launch servo
                 }
                 else {

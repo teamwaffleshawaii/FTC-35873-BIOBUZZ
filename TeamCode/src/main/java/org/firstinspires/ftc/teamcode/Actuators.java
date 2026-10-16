@@ -55,6 +55,15 @@ public class Actuators{
         rightIntakeServo.setPosition(1);
     }
 
+    public void intakeReverse(){
+        //Intake Motor
+        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        intakeMotor.setPower(-0.5); //Adjust this speed as needed, currently 100%
+        //Intake Servos (Either 0 or 1)
+        leftIntakeServo.setPosition(0);
+        rightIntakeServo.setPosition(1);
+    }
+
     public void intakeOff(){
         intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         intakeMotor.setPower(0);
