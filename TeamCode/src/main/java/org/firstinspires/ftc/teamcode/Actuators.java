@@ -92,7 +92,7 @@ public class Actuators{
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftMotor.setTargetPosition((int) (-537.7 * rotation));
         rightMotor.setTargetPosition((int) (-537.7 * rotation));
         leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -109,7 +109,7 @@ public class Actuators{
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         leftMotor.setTargetPosition((int) (537.7 * rotation));
         rightMotor.setTargetPosition((int) (537.7 * rotation));
         leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -126,9 +126,9 @@ public class Actuators{
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftMotor.setTargetPosition((int) (537.7 * rotation));
-        rightMotor.setTargetPosition((int) (-537.7 * rotation));
+        rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftMotor.setTargetPosition((int) (-537.7 * rotation));
+        rightMotor.setTargetPosition((int) (537.7 * rotation));
         leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftMotor.setPower(power);
@@ -143,9 +143,9 @@ public class Actuators{
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        leftMotor.setTargetPosition((int) (-537.7 * rotation));
-        rightMotor.setTargetPosition((int) (537.7 * rotation));
+        rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftMotor.setTargetPosition((int) (537.7 * rotation));
+        rightMotor.setTargetPosition((int) (-537.7 * rotation));
         leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         leftMotor.setPower(power);

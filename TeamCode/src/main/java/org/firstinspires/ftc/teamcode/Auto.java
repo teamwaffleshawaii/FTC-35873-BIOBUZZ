@@ -15,34 +15,44 @@ public class Auto extends LinearOpMode {
                 //...Below are examples
                 //...
                 //go forward for 1 rotation at 30% speed
-                actuator.goForward(1, 0.3);
-                //Wait for a secnod
-                sleep(1000);
-
-                actuator.goBackward(1, 0.3);
-                sleep(1000);
-
-                actuator.turnLeft(1, 0.3);
-                sleep(1000);
-
-                actuator.turnRight(1, 0.3);
-                sleep(1000);
-
-                actuator.intakeOn();
-                sleep(1000);
-
-                actuator.intakeOn();
-                sleep(1000);
-
-                actuator.launchMotor(0.75);
-                sleep(1000);
-
-                actuator.launchMotor(0);
-                sleep(1000);
-
+                actuator.goForward(0.5, 0.20);
+                actuator.launchMotor(0.50);
+                sleep(1500);
                 actuator.launchServoOn();
+                sleep(5000);
+                actuator.launchServoOff();
+                actuator.launchMotor(0.20);
 
 
+                //Wait for a second
+                //sleep(1000);
+
+                //actuator.goBackward(1, 0.3);
+                //sleep(1000);
+
+                //actuator.turnLeft(1, 0.3);
+                //sleep(1000);
+
+                //actuator.turnRight(1, 0.3);
+                //sleep(1000);
+
+                //actuator.intakeOn();
+                //sleep(1000);
+
+                //actuator.intakeOff();
+                //sleep(1000);
+
+                //actuator.launchMotor(0.50);
+                //sleep(1000);
+
+                //actuator.launchMotor(0);
+                //sleep(1000);
+
+                //actuator.launchServoOn();
+                //sleep(1000);
+
+                //actuator.launchServoOff();
+                //sleep(1000);
 
                 break;  //Break out of loop to stop the code
             }
