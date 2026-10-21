@@ -15,13 +15,22 @@ public class Auto extends LinearOpMode {
                 //...Below are examples
                 //...
                 //go forward for 1 rotation at 30% speed
-                actuator.goForward(0.5, 0.20);
-                actuator.launchMotor(0.50);
+
+                actuator.launchMotor(0.45);
                 sleep(1500);
                 actuator.launchServoOn();
                 sleep(5000);
                 actuator.launchServoOff();
                 actuator.launchMotor(0.20);
+
+                actuator.turnRight(1.3, 0.50);
+                actuator.goBackward(2,50);
+                actuator.turnLeft(1.4,50);
+                actuator.goForward(7.9, 50);
+                actuator.turnRight(1.2, 50);
+                actuator.goBackward(1, 0.50);
+
+
 
 
                 //Wait for a second
