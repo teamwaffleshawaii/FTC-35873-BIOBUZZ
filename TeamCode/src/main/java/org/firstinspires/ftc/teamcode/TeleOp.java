@@ -31,7 +31,7 @@ public class TeleOp extends LinearOpMode {
 
                 //Control your launch using the x & y
                 if (gamepad2.x) {
-                    actuator.launchMotor(0.50); //Press X to turn on
+                    actuator.launchMotor(0.45); //Press X to turn on
                 }
                 else if (gamepad2.y) {
                     actuator.launchMotor(0);    //Press Y to turn off
