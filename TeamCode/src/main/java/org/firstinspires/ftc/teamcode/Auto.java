@@ -29,6 +29,14 @@ public class Auto extends LinearOpMode {
         if (!opModeIsActive() || isStopRequested()) return;
         try {
             // The third argument prevents a busy-wait after Stop is pressed.
+
+            // Launcher example (UNCOMMENT ONLY after safe testing):
+            // launcher.setMotorPower(0.45);
+            // sleep(1500); // Allow flywheel to spin up.
+            // launcher.feedOn();
+            // sleep(1000);
+            // launcher.feedOff();
+
             // Adjust distances/speeds ONLY after testing physical robot motion.
             drivetrain.goForward(1, 0.20, this::opModeIsActive);
             drivetrain.goBackward(1, 0.20, this::opModeIsActive);
@@ -37,12 +45,6 @@ public class Auto extends LinearOpMode {
             drivetrain.strafeLeft(1, 0.20, this::opModeIsActive);
             drivetrain.strafeRight(1, 0.20, this::opModeIsActive);
 
-            // Launcher example (UNCOMMENT ONLY after safe testing):
-            // launcher.setMotorPower(0.45);
-            // sleep(1500); // Allow flywheel to spin up.
-            // launcher.feedOn();
-            // sleep(1000);
-            // launcher.feedOff();
         } finally {
             drivetrain.stop();
             intake.off();
