@@ -19,6 +19,8 @@ public class Auto extends LinearOpMode {
     private final Intake intake = new Intake();
     private final Launcher launcher = new Launcher();
 
+    // FTC calls runOpMode() when the autonomous program is selected and started.
+    // Code BEFORE waitForStart() prepares the robot; code AFTER it runs at Start.
     @Override public void runOpMode() {
         drivetrain.init(hardwareMap);
         intake.init(hardwareMap);
@@ -28,6 +30,7 @@ public class Auto extends LinearOpMode {
         waitForStart();
         if (!opModeIsActive() || isStopRequested()) return;
         try {
+            // try/finally is a safety pattern: 'finally' runs even when a movement fails.
             // The third argument prevents a busy-wait after Stop is pressed.
 
             // Launcher example (UNCOMMENT ONLY after safe testing):
