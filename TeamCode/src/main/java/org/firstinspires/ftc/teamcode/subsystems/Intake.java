@@ -7,9 +7,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 /** Intake hardware and behaviors belong here, not inside driver controls. */
 public class Intake {
+    // 'private' prevents other classes from changing the motor unexpectedly.
+    // OpModes use public methods such as on() instead.
     private DcMotor intakeMotor;
     private Servo leftIntakeServo, rightIntakeServo;
 
+    // Initialization configures the physical devices once before the match.
     public void init(HardwareMap hardwareMap) {
         // Names below must match the Robot Controller configuration exactly.
         intakeMotor = hardwareMap.get(DcMotor.class, "intakeMotor");
@@ -28,6 +31,7 @@ public class Intake {
     }
 
     /** Push pieces out to help clear a jam. */
+    // Negative motor power spins the intake in the opposite direction.
     public void reverse() {
         intakeMotor.setPower(-0.5); // 50% reverse: tune gently to protect the mechanism.
         leftIntakeServo.setPosition(0);
@@ -35,6 +39,8 @@ public class Intake {
     }
 
     /** Stop the motor and return the servos to their original neutral positions. */
+    // The servo positions 0.5 are positions, not a universal 'servo off' command.
+    // Their meaning depends on the actual mechanism; check physical travel.
     public void off() {
         intakeMotor.setPower(0);
         leftIntakeServo.setPosition(0.5);
