@@ -10,8 +10,10 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
  * A sensor subsystem READS information; it should not command motors.
  */
 public class RobotSensors {
+    // IMU stands for inertial measurement unit; yaw measures horizontal rotation.
     private IMU imu;
 
+    // A wrong hub orientation makes field-centric drive behave unexpectedly.
     public void init(HardwareMap hardwareMap) {
         imu = hardwareMap.get(IMU.class, "imu");
         // These directions describe how the physical hub is mounted on this robot.
@@ -23,6 +25,8 @@ public class RobotSensors {
     }
 
     /** Returns the robot's yaw in the caller's requested angular units. */
+    // The AngleUnit argument lets the caller request degrees or radians.
+    // This method returns a sensor reading; it never changes the motors.
     public double getHeading(AngleUnit unit) {
         return imu.getRobotYawPitchRollAngles().getYaw(unit);
     }
