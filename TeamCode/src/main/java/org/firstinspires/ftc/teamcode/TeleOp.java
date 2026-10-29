@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
 import org.firstinspires.ftc.teamcode.subsystems.Launcher;
-import org.firstinspires.ftc.teamcode.subsystems.RobotSensors;
+import org.firstinspires.ftc.teamcode.subsystems.Sensors;
 
 /**
  * FIELD-CENTRIC TeleOp: the IMU heading adjusts the wheel commands so that
@@ -21,7 +21,7 @@ public class TeleOp extends LinearOpMode {
     private final Drivetrain drivetrain = new Drivetrain();
     private final Intake intake = new Intake();
     private final Launcher launcher = new Launcher();
-    private final RobotSensors sensors = new RobotSensors();
+    private final Sensors sensors = new Sensors();
 
     @Override public void runOpMode() {
         drivetrain.init(hardwareMap);

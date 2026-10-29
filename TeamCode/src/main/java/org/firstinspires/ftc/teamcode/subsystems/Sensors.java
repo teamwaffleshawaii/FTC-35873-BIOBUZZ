@@ -9,7 +9,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
  * Reads the REV hub IMU (inertial measurement unit).
  * A sensor subsystem READS information; it should not command motors.
  */
-public class RobotSensors {
+public class Sensors {
     // IMU stands for inertial measurement unit; yaw measures horizontal rotation.
     private IMU imu;
 
