@@ -17,14 +17,17 @@ public class TeleOperated extends LinearOpMode {
     private final Intake intake = new Intake();
     private final Launcher launcher = new Launcher();
 
+    // An OpMode reads controllers and calls subsystems; it should not own motors.
     @Override public void runOpMode() {
         drivetrain.init(hardwareMap);
         intake.init(hardwareMap);
         launcher.init(hardwareMap);
         telemetry.addLine("Robot-centric ready. Check both controllers.");
         telemetry.update();
+        // Pause here until the driver presses PLAY on the Driver Station.
         waitForStart();
         try {
+            // This loop repeats many times per second while the match is running.
             while (opModeIsActive() && !isStopRequested()) {
                 // FTC stick Y is negative when pushed forward, hence the minus sign.
                 double forward = -gamepad1.left_stick_y;
@@ -46,6 +49,7 @@ public class TeleOperated extends LinearOpMode {
                 if (gamepad2.right_bumper) launcher.feedOn();
                 else launcher.feedOff();
 
+                // Telemetry is text sent to the Driver Station for troubleshooting.
                 telemetry.addData("Left Front Power", drivetrain.getLeftFrontPower());
                 telemetry.addData("Right Front Power", drivetrain.getRightFrontPower());
                 telemetry.addData("Left Back Power", drivetrain.getLeftBackPower());
