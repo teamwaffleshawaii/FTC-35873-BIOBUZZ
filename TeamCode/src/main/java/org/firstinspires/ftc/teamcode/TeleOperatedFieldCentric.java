@@ -17,7 +17,9 @@ import org.firstinspires.ftc.teamcode.subsystems.RobotSensors;
  */
 @TeleOp(name = "TeleOp-FieldCentric")
 public class TeleOperatedFieldCentric extends LinearOpMode {
+    // Save an offset so a driver can choose which direction counts as heading 0.
     private double resetAngle = 0;
+    // Keep the previous bumper state to detect a NEW press, not every held loop.
     private boolean wasResetPressed = false;
     private final Drivetrain drivetrain = new Drivetrain();
     private final Intake intake = new Intake();
@@ -28,6 +30,7 @@ public class TeleOperatedFieldCentric extends LinearOpMode {
         drivetrain.init(hardwareMap);
         intake.init(hardwareMap);
         launcher.init(hardwareMap);
+        // Field-centric drive needs an initialized IMU (gyro) to know its heading.
         sensors.init(hardwareMap);
         telemetry.addLine("Field-centric ready. Verify IMU mounting and heading.");
         telemetry.update();
@@ -79,12 +82,15 @@ public class TeleOperatedFieldCentric extends LinearOpMode {
         if (gamepad1.dpad_up) stickY = -0.5;
         else if (gamepad1.dpad_down) stickY = 0.5;
 
+        // atan2 finds the joystick's direction; subtracting heading changes
+        // from field-relative input into wheel-relative movement instructions.
         double theta = Math.atan2(stickY, stickX) - gyroAngle - Math.PI / 2;
         double magnitude = Math.hypot(stickX, stickY);
         double px = magnitude * Math.sin(theta + Math.PI / 4);
         double py = magnitude * Math.sin(theta - Math.PI / 4);
         double frontLeft = py - rotate, frontRight = px + rotate;
         double backLeft = px - rotate, backRight = py + rotate;
+        // Only Drivetrain.java touches the drive motors themselves.
         drivetrain.setWheelPowers(frontLeft, frontRight, backLeft, backRight);
 
         telemetry.addData("Stick_X", stickX);
