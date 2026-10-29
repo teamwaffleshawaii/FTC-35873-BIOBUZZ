@@ -25,45 +25,22 @@ Motor 0: rightBackMotor
 
 Motor 1: leftBackMotor
 
-# FTC 35873 — BIOBUZZ 🤖
+# FTC 35873: Finding your way around the robot code
 
-Welcome to the FTC 35873 robot code! This project is written in **Java** using the **FIRST Tech Challenge (FTC) SDK**. New programmers: you do **not** need to understand every line immediately. Start with the file guide and follow a single controller button through the code.
+A **subsystem** is a Java class that groups the actions for one mechanism. An
+**OpMode** is the program selected on the Driver Station. The OpMode decides when
+to act, and the subsystem sends the hardware commands.
 
-> **The main idea:** An **OpMode** decides **WHEN** a robot action happens. A **subsystem** decides **HOW** that specific part of the robot works.
+## Where to look
 
-## 🚀 Start here: file-by-file guide
+All Java files below live in `src/main/java/org/firstinspires/ftc/teamcode/`.
 
-The team's code lives in `TeamCode/src/main/java/org/firstinspires/ftc/teamcode/`. The FTC SDK's `FtcRobotController/` directory contains framework code, so students generally should not edit it.
+| File | Responsibility |
+| --- | --- |
+| `subsystems/Drivetrain.java` | Four wheel-power methods and the six original encoder movement methods. |
+| `subsystems/Intake.java` | Coordinates the intake motor and two intake servos for in, out, and off. |
+| `subsystems/Launcher.java` | Applies launcher motor power. |
+| `subsystems/Sensors.java` | Sets up the IMU and reads yaw (heading). |
+| `TeleOp.java` | Uses controller input and IMU heading to calculate wheel powers (field centric). |
+| `Auto.java` | Runs the team's existing movement and launcher sequence. |
 
-| File | Beginner-friendly explanation | When should I edit it? |
-| --- | --- | --- |
-| `TeleOperated.java` | **Robot-centric driver mode.** Reads controllers and tells the robot what to do. Forward follows the robot's front. | Changing gamepad buttons or basic driver behavior |
-| `TeleOperatedFieldCentric.java` | **Field-centric driver mode.** Uses the IMU's heading plus math to help the driver move relative to the field. | Adjusting field-centric driving, heading reset, or gamepad mapping |
-| `Auto.java` | **Autonomous mode.** Runs a sequence of robot actions after Start without a driver. | Programming a match autonomous route |
-| `subsystems/Drivetrain.java` | Controls all **four mecanum wheels**, including encoder-based moves. | Changing wheel behavior, motor configuration, turning, strafing |
-| `subsystems/Intake.java` | Controls the **intake motor** and its **two servos**. | Changing how game pieces are collected or reversed |
-| `subsystems/Launcher.java` | Controls the **launcher motor** and **feed servo**. | Tuning launcher power or servo behavior |
-| `subsystems/RobotSensors.java` | Sets up and reads the **IMU**, which reports the robot's direction (yaw). | Changing sensor setup, mounting orientation, or adding readings |
-| `README.md` | This instruction guide. | Documenting new controls and team decisions |
-
-The old `Actuators.java` and `Sensors.java` were replaced by clearer, specialized subsystems. **Do not recreate a giant hardware class** when a mechanism can live in its own file.
-
-### How the files work together
-
-```text
-Driver presses a button
-         |
-         v
-TeleOperated.java or TeleOperatedFieldCentric.java
-         |       decides WHEN
-         v
-Intake.java / Launcher.java / Drivetrain.java
-         |       decides HOW
-         v
-Motor or servo on the physical robot
-
-RobotSensors.java -- reads IMU heading for field-centric control
-Auto.java         -- calls the same subsystems without gamepads
-```
-
-**Example:** Press **A** on controller 2 → TeleOp detects `gamepad2.a` → calls `intake.on()` → Intake sends power to the motor and positions its se
