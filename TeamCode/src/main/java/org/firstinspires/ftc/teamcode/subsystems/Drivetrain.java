@@ -13,9 +13,12 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  */
 public class Drivetrain {
     private static final double TICKS_PER_ROTATION = 537.7; // Check gearbox/encoder before tuning!
+    // An array groups four similar objects, allowing one loop to configure all motors.
     private final DcMotor[] motors = new DcMotor[4];
     private DcMotor leftFront, rightFront, leftBack, rightBack;
 
+    // The hardware map links Java variables to the named devices on the robot.
+    // Call init once BEFORE moving the robot, not on every controller loop.
     public void init(HardwareMap hardwareMap) {
         leftFront = hardwareMap.get(DcMotor.class, "leftFront");
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
@@ -50,6 +53,8 @@ public class Drivetrain {
      * forward > 0 drives toward the robot's front; strafe > 0 drives right.
      * The team previously used these same wheel-mixing signs.
      */
+    // Adding forward, sideways, and turning commands is called mecanum mixing.
+    // Each wheel needs its own combination because its rollers face a different way.
     public void driveRobotCentric(double forward, double strafe, double turn) {
         setWheelPowers(turn + forward + strafe,
                 -turn + forward - strafe,
@@ -79,6 +84,8 @@ public class Drivetrain {
      * so an unplugged encoder or stalled motor cannot hang autonomous indefinitely.
      * This is a simple educational helper, not a path planner.
      */
+    // These are signed rotation targets; the motor controller handles moving to them.
+    // isActive is a small function supplied by Auto.java that checks for STOP.
     public void moveRotations(double lf, double rf, double lb, double rb, double power,
                               java.util.function.BooleanSupplier isActive) {
         // FTC Android supports System.nanoTime(); this avoids requiring an OpMode timer.
@@ -89,9 +96,11 @@ public class Drivetrain {
         for (int i = 0; i < motors.length; i++) {
             motors[i].setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             motors[i].setTargetPosition(targets[i]);
+            // RUN_TO_POSITION moves toward the target using encoder feedback.
             motors[i].setMode(DcMotor.RunMode.RUN_TO_POSITION);
             motors[i].setPower(Math.abs(clip(power)));
         }
+        // Record start time so we can stop waiting after five seconds.
         long start = System.nanoTime();
         try {
             while (isActive.getAsBoolean() && !Thread.currentThread().isInterrupted()
