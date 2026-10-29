@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.subsystems.Intake;
@@ -11,12 +11,9 @@ import org.firstinspires.ftc.teamcode.subsystems.RobotSensors;
 /**
  * FIELD-CENTRIC TeleOp: the IMU heading adjusts the wheel commands so that
  * stick directions stay aligned with the field, not the robot.
- *
- * Student exercise: compare the trig here with driveRobotCentric() and explain
- * why rotating the joystick vector by the negative heading is useful.
  */
-@TeleOp(name = "TeleOp-FieldCentric")
-public class TeleOperatedFieldCentric extends LinearOpMode {
+@com.qualcomm.robotcore.eventloop.opmode.TeleOp(name = "TeleOp")
+public class TeleOp extends LinearOpMode {
     // Save an offset so a driver can choose which direction counts as heading 0.
     private double resetAngle = 0;
     // Keep the previous bumper state to detect a NEW press, not every held loop.
