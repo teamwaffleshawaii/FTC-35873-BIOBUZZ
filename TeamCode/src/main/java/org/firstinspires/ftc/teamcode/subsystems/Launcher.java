@@ -13,6 +13,7 @@ public class Launcher {
     private DcMotor launchMotor;
     private Servo launchServo;
 
+    // Find the motor and servo by the exact names saved in Robot Configuration.
     public void init(HardwareMap hardwareMap) {
         launchMotor = hardwareMap.get(DcMotor.class, "launchMotor");
         launchServo = hardwareMap.get(Servo.class, "launchServo");
@@ -22,11 +23,14 @@ public class Launcher {
     }
 
     /** Motor power ranges from -1 to 1; current team launch setting is 0.45. */
+    // Clamping protects against invalid commands larger than full power.
+    // Motor power is NOT the same as a measured or regulated wheel velocity.
     public void setMotorPower(double power) {
         launchMotor.setPower(Math.max(-1, Math.min(1, power)));
     }
 
     /** Feed/launch a game piece. Ensure the servo has a safe physical range. */
+    // Servo position values are normally 0.0 through 1.0, NOT degrees.
     public void feedOn() { launchServo.setPosition(1.0); }
 
     /** Rest the launch servo at the team's previously used position. */
