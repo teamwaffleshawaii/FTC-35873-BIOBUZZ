@@ -37,14 +37,14 @@ public class AutoRight extends LinearOpMode {
             launcher.setMotorPower(0.45);
             sleep(1500); // Allow flywheel to spin up.
             launcher.feedOn();
-            sleep(1000);
+            sleep(5000);
             launcher.feedOff();
 
             // Adjust distances/speeds ONLY after testing physical robot motion.
-            drivetrain.goForward(1, 0.20, this::opModeIsActive);
-            drivetrain.strafeLeft(3, 0.20, this::opModeIsActive);
-            drivetrain.goForward(7, 0.20, this::opModeIsActive);
-            drivetrain.strafeLeft(1, 0.20, this::opModeIsActive);
+            drivetrain.goForward(1, 0.5, this::opModeIsActive);
+            drivetrain.strafeLeft(3, 0.5, this::opModeIsActive);
+            drivetrain.goForward(8, 0.5, this::opModeIsActive);
+            drivetrain.strafeLeft(0.50, 0.50, this::opModeIsActive);
 
         } finally {
             drivetrain.stop();
