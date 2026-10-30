@@ -13,8 +13,8 @@ import org.firstinspires.ftc.teamcode.subsystems.Launcher;
  * Confirm gear ratio, wheel direction, travel distance, and motor power on blocks.
  * Edit this route to match the current FTC season's starting position and goals.
  */
-@Autonomous(name = "Autonomous")
-public class Auto extends LinearOpMode {
+@Autonomous(name = "Auto Park")
+public class AutoPark extends LinearOpMode {
     private final Drivetrain drivetrain = new Drivetrain();
     private final Intake intake = new Intake();
     private final Launcher launcher = new Launcher();
