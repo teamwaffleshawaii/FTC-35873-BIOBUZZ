@@ -33,9 +33,7 @@ public class AutoPark extends LinearOpMode {
             // try/finally is a safety pattern: 'finally' runs even when a movement fails.
             // The third argument prevents a busy-wait after Stop is pressed.
 
-            // Launcher example (UNCOMMENT ONLY after safe testing):
-
-            // Adjust distances/speeds ONLY after testing physical robot motion.
+            // Drive forward to park
             drivetrain.goForward(1, 0.50, this::opModeIsActive);
 
         } finally {

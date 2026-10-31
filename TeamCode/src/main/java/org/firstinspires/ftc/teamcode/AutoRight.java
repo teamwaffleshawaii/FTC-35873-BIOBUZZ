@@ -38,7 +38,9 @@ public class AutoRight extends LinearOpMode {
             sleep(1500); // Allow flywheel to spin up.
             launcher.feedOn();
             intake.on();
-            sleep(5000);
+            sleep(5000); // Launch balls for 5 seconds
+
+            //Turn everything off
             launcher.feedOff();
             intake.off();
 

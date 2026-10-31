@@ -33,12 +33,17 @@ public class AutoLeft extends LinearOpMode {
             // try/finally is a safety pattern: 'finally' runs even when a movement fails.
             // The third argument prevents a busy-wait after Stop is pressed.
 
-            // Launcher example (UNCOMMENT ONLY after safe testing):
+            //Wait 15 seconds for partner to score
+            sleep(15000);
+
+            // Launch motor on
             launcher.setMotorVelocity();
             sleep(1500); // Allow flywheel to spin up.
             launcher.feedOn();
             intake.on();
-            sleep(5000);
+            sleep(5000); // Launch balls for 5 seconds
+
+            //Turn everything off
             launcher.feedOff();
             intake.off();
 
