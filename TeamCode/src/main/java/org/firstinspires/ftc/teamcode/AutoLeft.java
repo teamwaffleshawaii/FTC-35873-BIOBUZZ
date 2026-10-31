@@ -34,19 +34,17 @@ public class AutoLeft extends LinearOpMode {
             // The third argument prevents a busy-wait after Stop is pressed.
 
             // Launcher example (UNCOMMENT ONLY after safe testing):
-            launcher.setMotorPower(0.45);
+            launcher.setMotorVelocity();
             sleep(1500); // Allow flywheel to spin up.
             launcher.feedOn();
-            sleep(1000);
+            intake.on();
+            sleep(5000);
             launcher.feedOff();
+            intake.off();
 
             // Adjust distances/speeds ONLY after testing physical robot motion.
-            drivetrain.goForward(1, 0.20, this::opModeIsActive);
-            drivetrain.goBackward(1, 0.20, this::opModeIsActive);
-            drivetrain.turnLeft(1, 0.20, this::opModeIsActive);
-            drivetrain.turnRight(1, 0.20, this::opModeIsActive);
-            drivetrain.strafeLeft(1, 0.20, this::opModeIsActive);
-            drivetrain.strafeRight(1, 0.20, this::opModeIsActive);
+            drivetrain.goForward(1, 0.50, this::opModeIsActive);
+            drivetrain.strafeRight(3.5, 0.5, this::opModeIsActive);
 
         } finally {
             drivetrain.stop();

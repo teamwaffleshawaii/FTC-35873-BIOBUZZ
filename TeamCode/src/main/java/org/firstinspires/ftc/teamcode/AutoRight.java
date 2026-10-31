@@ -34,16 +34,18 @@ public class AutoRight extends LinearOpMode {
             // The third argument prevents a busy-wait after Stop is pressed.
 
             // Launcher example (UNCOMMENT ONLY after safe testing):
-            launcher.setMotorPower(0.45);
+            launcher.setMotorVelocity();
             sleep(1500); // Allow flywheel to spin up.
             launcher.feedOn();
+            intake.on();
             sleep(5000);
             launcher.feedOff();
+            intake.off();
 
             // Adjust distances/speeds ONLY after testing physical robot motion.
             drivetrain.goForward(1, 0.5, this::opModeIsActive);
             drivetrain.strafeLeft(3, 0.5, this::opModeIsActive);
-            drivetrain.goForward(8, 0.5, this::opModeIsActive);
+            drivetrain.goForward(5.5, 0.5, this::opModeIsActive);
             drivetrain.strafeLeft(0.50, 0.50, this::opModeIsActive);
 
         } finally {
