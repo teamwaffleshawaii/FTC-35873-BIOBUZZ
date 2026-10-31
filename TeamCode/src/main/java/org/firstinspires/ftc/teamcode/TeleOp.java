@@ -45,7 +45,7 @@ public class TeleOp extends LinearOpMode {
                 else intake.off();
 
                 if (gamepad2.x) launcher.setMotorVelocity();
-                else if (gamepad2.y) launcher.setMotorVelocity();
+                else if (gamepad2.y) launcher.turnMotorOff();
                 if (gamepad2.right_bumper) launcher.feedOn();
                 else launcher.feedOff();
                 telemetry.update();
