@@ -38,27 +38,34 @@ public class AutoRightCollect extends LinearOpMode {
             sleep(1500); // Allow flywheel to spin up.
             launcher.feedOn();
             intake.on();
-            sleep(5000); // Launch balls for 5 seconds
+            sleep(4000); // Launch balls for 5 seconds
 
             //Turn everything off
+            launcher.turnMotorOff();
             launcher.feedOff();
             intake.off();
 
             // Adjust distances/speeds ONLY after testing physical robot motion.
             drivetrain.goForward(1, 0.5, this::opModeIsActive);
-            drivetrain.strafeLeft(4, 0.5, this::opModeIsActive);
-            drivetrain.goBackward(1, 0.5, this::opModeIsActive);
+            drivetrain.strafeLeft(4, 0.70, this::opModeIsActive);
             intake.on();
-            sleep(5000);
-            drivetrain.goForward(1, 0.50, this::opModeIsActive);
-            drivetrain.strafeRight(4, 0.5, this::opModeIsActive);
-            drivetrain.goForward(5.5, 0.50, this::opModeIsActive);
-            drivetrain.strafeLeft(1, 0.5, this::opModeIsActive);
+            sleep(500);
+            drivetrain.goBackward(1, 0.70, this::opModeIsActive);
+            drivetrain.goForward(1, 0.70, this::opModeIsActive);
+            drivetrain.strafeRight(1, 0.70, this::opModeIsActive);
+            drivetrain.goForward(5.5, 0.70, this::opModeIsActive);
+            drivetrain.strafeLeft(1,0.70, this::opModeIsActive);
+
+
+
+
+
 
         } finally {
             drivetrain.stop();
             intake.off();
             launcher.stop();
+
         }
     }
 }
