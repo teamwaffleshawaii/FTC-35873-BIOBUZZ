@@ -27,7 +27,7 @@ public class Launcher {
     // Clamping protects against invalid commands larger than full power.
     // Motor power is NOT the same as a measured or regulated wheel velocity.
     public void setMotorVelocity() {
-        launchMotor.setVelocity(1250); //adjust this
+        launchMotor.setVelocity(1225); //adjust this
     }
 
     public void turnMotorOff() {
